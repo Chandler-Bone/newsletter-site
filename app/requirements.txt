@@ -1,0 +1,6 @@
+Django==4.1.1
+django_phonenumber_field==7.0.0
+phonenumbers==8.12.55
+setuptools==63.2.0
+twilio==7.14.0
+psycopg2==2.9.3

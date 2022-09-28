@@ -1,0 +1,35 @@
+{% extends "main.html" %}
+{% block title %}
+    Sending Newsletter
+{% endblock title %}
+{% block stylesheets %}
+    {% comment %} load in static files for css reference {% endcomment %}
+    {% load static %}
+    <link rel="stylesheet"
+          type="text/css"
+          href="{% static 'css/dashboard.css' %}"/>
+{% endblock stylesheets %}
+{% block content %}
+    <div id="editSubModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form method="post" action="">
+                    {% csrf_token %}
+                    <div class="modal-header">
+                        <h4 class="modal-title">Send Newsletter</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label>Message</label>
+                            <textarea class="form-control" name="message" maxlength="320" required></textarea>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <a class="btn btn-default" href="{% url 'dashboard' %}">Cancel</a>
+                        <input type="submit" class="btn btn-info" value="Send"/>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock content %}

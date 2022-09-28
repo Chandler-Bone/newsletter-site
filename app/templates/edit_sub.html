@@ -1,0 +1,40 @@
+{% extends "main.html" %}
+{% block title %}
+   Editing Entry
+{% endblock title %}
+{% block stylesheets %}
+   {% comment %} load in static files for css reference {% endcomment %}
+   {% load static %}
+   <link rel="stylesheet"
+         type="text/css"
+         href="{% static 'css/dashboard.css' %}"/>
+{% endblock stylesheets %}
+{% block content %}
+      <div class="modal-dialog">
+         <div class="modal-content">
+            <form method="post" action="">
+               {% csrf_token %}
+               <div class="modal-header">
+                  <h4 class="modal-title">Edit Employee</h4>
+               </div>
+               <div class="modal-body">
+                  <div class="form-group">
+                     <label>Name</label>
+                     {{ form.name }}
+                  </div>
+                  <br/>
+                  <div class="form-group">
+                     <label>Phone</label>
+                     {{ form.phone }}
+                  </div>
+                  <br/>
+                  <p>Enter a valid phone number (e.g. +12125552368).</p>
+               </div>
+               <div class="modal-footer">
+                  <a class="btn btn-default" href="{% url 'dashboard' %}">Cancel</a>
+                  <input type="submit" class="btn btn-info" value="Save"/>
+               </div>
+            </form>
+         </div>
+      </div>
+{% endblock content %}

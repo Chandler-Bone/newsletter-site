@@ -1,0 +1,33 @@
+{% extends "main.html" %}
+{% block title %}
+    Homepage
+{% endblock title %}
+{% block stylesheets %}
+    {% comment %} load in static files for css reference {% endcomment %}
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/home.css' %}"/>
+{% endblock stylesheets %}
+{% block content %}
+    <div class="card">
+        <h3>Our Newsletter</h3>
+        <form method="post" action="{% url 'home' %}">
+            {% comment %} required and prevents cross-site request forgery attacks {% endcomment %}
+            {% csrf_token %}
+            <div class="inputbox">
+                {{ form.name }}
+                <span>Full Name</span>
+            </div>
+            <div class="inputbox">
+                {{ form.phone }}
+                <span>Phone</span>
+            </div>
+            {% comment %} {{form.phone.errors}} {% endcomment %}
+            <p>Enter a valid phone number (e.g. +12125552368).</p>
+            {{ form.phone.errors }}
+            <button class="btn btn-primary btn-block" type="Submit">Subscribe</button>
+            <br/>
+        </form>
+        <a href="{% url 'unsubscribe' %}">Unsubscribe</a>
+        <a href="{% url 'login' %}">Login</a>
+    </div>
+{% endblock content %}

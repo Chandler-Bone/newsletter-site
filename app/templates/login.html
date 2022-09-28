@@ -1,0 +1,31 @@
+{% extends "main.html" %}
+{% block title %}
+    Login
+{% endblock title %}
+{% block stylesheets %}
+    {% comment %} load in static files for css reference {% endcomment %}
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/home.css' %}"/>
+{% endblock stylesheets %}
+{% block content %}
+    <div class="card">
+        <form method="post" action="{% url 'login' %}">
+            {% comment %} required and prevents cross-site request forgery attacks {% endcomment %}
+            {% csrf_token %}
+            <div class="inputbox">
+                <input type="text" class="form-control" name="username" required/>
+                <span>Username</span>
+            </div>
+            <br/>
+            <div class="inputbox">
+                <input type="password" class="form-control" name="password" required/>
+                <span>Password</span>
+            </div>
+            <button class="btn btn-primary btn-block" type="Submit">Login</button>
+            <br/>
+            {% for message in messages %}<p id="messages">{{ message }}</p>{% endfor %}
+            <br/>
+            <a href="{% url 'home' %}">Back</a>
+        </form>
+    </div>
+{% endblock content %}

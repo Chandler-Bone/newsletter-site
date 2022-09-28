@@ -1,0 +1,70 @@
+body{
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(45deg,#38665a,#47ac91)
+}
+.card{
+    width: 400px;
+    padding: 80px 50px 20px 50px;
+    position: relative;
+    border-radius: 20px;
+    box-shadow: 0 5px 25px rgba(0,0,0,0.2)
+}
+.card h3{
+    color: #111;
+    margin-bottom: 50px;
+    border-left: 5px solid rgb(0, 162, 255);
+    padding-left: 10px;
+    line-height: 1em
+}
+.card h2{
+    color: #111;
+    margin-bottom: 40px;
+    line-height: 1em;
+    text-align: center;
+}
+.inputbox{
+    margin-bottom: 30px
+}
+.inputbox input{
+    position:absolute;
+    width: 75%;
+}
+.inputbox input:focus{
+    color: #495057;
+    background-color: #fff;
+    border-color: rgb(0, 162, 255);
+    outline: 0;
+    box-shadow: none
+}
+.inputbox span{
+    position: relative;
+    top: 3px;
+    left: 1px;
+    padding-left: 10px;
+    display: inline-block;
+    transition: 0.5s
+}
+.inputbox input:focus ~ span{
+    transform: translateX(-10px) translateY(-25px);
+    font-size: 12px
+}
+.inputbox input:valid ~ span{
+    transform: translateX(-10px) translateY(-32px);
+    font-size: 12px
+}
+p{
+    font-size: 12px;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+a{
+    text-align: center;
+}
+
+.errorlist li{
+    color: red;
+}

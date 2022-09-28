@@ -1,0 +1,14 @@
+{% extends "main.html" %}
+{% block title %}
+    Thank You!
+{% endblock title %}
+{% block stylesheets %}
+    {% comment %} load in static files for css reference {% endcomment %}
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/home.css' %}"/>
+{% endblock stylesheets %}
+{% block content %}
+    <div class="card">
+        <h2>Thanks for registering!</h2>
+    </div>
+{% endblock content %}
