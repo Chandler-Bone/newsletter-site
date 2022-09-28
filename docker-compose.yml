@@ -1,0 +1,36 @@
+# Use postgres/example user/password credentials
+version: '3.1'
+
+services:
+
+  db:
+    image: postgres
+    volumes:
+      - ./data/db:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_DB=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=password123
+      
+  web:
+    build: 
+      context: ./
+      dockerfile: ./service/django/Dockerfile
+    command: python manage.py runserver 0.0.0.0:8000 --insecure
+    volumes:
+      - ./app:/app
+    ports:
+      - "80:8000"
+    environment:
+      - POSTGRES_NAME=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=password123
+
+      - TWILIO_ACCOUNT_SID=
+      - TWILIO_AUTH_TOKEN=
+      - TWILIO_NUMBER=
+
+      - DEBUG=0
+    depends_on:
+      - db
+      
